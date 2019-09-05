@@ -14,6 +14,23 @@ int main(int argc, char* argv[]) {
     bool b = result["d"].as<bool>();
     std::string str = result["f"].as<std::string>();
 
+    string path = result["dir"].as<std::string>();
+
+    for (auto file : path) {
+        auto first_chunk = get_first_chunk(file);
+
+        if (current_pool.contain(first_chunk)) {
+            if (current_pool.contain(file)) {
+                continue;
+            }
+            else {
+                get_chunk(file);
+            }
+        } else {
+            get_without_prev(file);
+        }
+    }
+
     cout << b << endl << str << endl;
     return 0;
 }
