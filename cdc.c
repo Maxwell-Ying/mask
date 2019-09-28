@@ -41,8 +41,6 @@ unsigned int adler32_rolling_checksum(unsigned int csum, int len, char c1, char 
         return (s1 & 0xffff) + (s2 << 16);  
 }  
 
-
-
 /* content-defined chunking */
 /*fd_src为分块的源文件*/
 /*fd_chunk为分块后的文件*/
